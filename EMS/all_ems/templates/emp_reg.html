@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Employee Registration
+{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="text-center">Employee Registration</h2>
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="card shadow">
+              <div class="card-body">
+                  <form method="post">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          <label class="form-label">Employee ID</label>
+                          <input type="text" name="emp_id" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label">First Name</label>
+                          <input type="text" name="first_name" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label">Last Name</label>
+                          <input type="text" name="last_name" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label">Email</label>
+                          <input type="email" name="email" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label">Phone</label>
+                          <input type="text" name="phone" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label">Position</label>
+                          <input type="text" name="position" class="form-control" required>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label">Department</label>
+                          <input type="text" name="department" class="form-control" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary w-100">Register</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>s
+  
+{% endblock content %}
+  
