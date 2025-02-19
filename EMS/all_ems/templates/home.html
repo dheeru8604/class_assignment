@@ -1,15 +1,12 @@
 {% extends 'base.html' %}
 
-
-{% block title %} Home{% endblock title %}
-  
+{% block title %} Home {% endblock %}
 
 {% block content %}
+<div class="container text-center  py-5 ">
+    <h1 class="text-primary">Welcome to Tata Employee Management System</h1>
+    <p class="lead">Efficiently manage employee data, attendance, and payroll.</p>
 
-
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat reprehenderit quisquam error! Architecto dignissimos, porro quas assumenda, unde, reiciendis esse soluta doloremque eaque inventore expedita. Ratione natus url illo, laudantium soluta nesciunt maiores ipsa similique?</p>
-
-{% endblock content %} 
-  
-
-
+    <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg mt-3">Go to Dashboard</a>
+</div>
+{% endblock %}

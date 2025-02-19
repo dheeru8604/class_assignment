@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Employee {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow">
+                <h2 class="text-center">Update Employee Information</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Display form errors -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ field|capfirst }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Full Name -->
+                    <div class="mb-3">
+                        <label for="id_name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="id_name" name="name" value="{{ form.name.value }}" required>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="id_email" name="email" value="{{ form.email.value }}" required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label for="id_phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="id_phone" name="phone" value="{{ form.phone.value }}" required>
+                    </div>
+
+                    <!-- Position -->
+                    <div class="mb-3">
+                        <label for="id_position" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="id_position" name="position" value="{{ form.position.value }}" required>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="mb-3">
+                        <label for="id_department" class="form-label">Department</label>
+                        <input type="text" class="form-control" id="id_department" name="department" value="{{ form.department.value }}" required>
+                    </div>
+
+                    <!-- Salary -->
+                    <div class="mb-3">
+                        <label for="id_salary" class="form-label">Salary</label>
+                        <input type="number" class="form-control" id="id_salary" name="salary" value="{{ form.salary.value }}" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100">Update Employee</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

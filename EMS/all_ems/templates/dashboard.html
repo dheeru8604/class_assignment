@@ -3,30 +3,34 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block content %}
-<div class="container">
-    {% comment %} <h2>Welcome to Employee Management System</h2> {% endcomment %}
-    <div class="container text-center mt-5">
-      <h1>Welcome to Tata Employee Management System</h1>
-      <p class="lead">Manage employee data, attendance, and payroll efficiently.</p>
-     
-  </div>
+<div class="container mt-5">
+    <div class="text-center">
+        <h1>Welcome to Tata Employee Management System</h1>
+        <p class="lead">Manage employee data, attendance, and payroll efficiently.</p>
+    </div>
+
     <div class="row mt-4">
+        <!-- Total Employees -->
         <div class="col-md-4">
-            <div class="card bg-primary text-white p-3">
+            <div class="card bg-primary text-white p-3 text-center shadow">
                 <h3>Total Employees</h3>
-                <p>50</p>
+                <p class="fs-4">{{ total_emp }}</p>
             </div>
         </div>
+
+        <!-- Active Employees -->
         <div class="col-md-4">
-            <div class="card bg-success text-white p-3">
+            <div class="card bg-success text-white p-3 text-center shadow">
                 <h3>Active Employees</h3>
-                <p>45</p>
+                <p class="fs-4">{{ active_employees }}</p> <!-- Pass from view -->
             </div>
         </div>
+
+        <!-- Pending Tasks -->
         <div class="col-md-4">
-            <div class="card bg-warning text-dark p-3">
+            <div class="card bg-warning text-dark p-3 text-center shadow">
                 <h3>Pending Tasks</h3>
-                <p>8</p>
+                <p class="fs-4">{{ pending_tasks }}</p> <!-- Pass from view -->
             </div>
         </div>
     </div>

@@ -1,15 +1,49 @@
 {% extends 'base.html' %}
 
-
-{% block title %} All Employees{% endblock title %}
-  
+{% block title %} All Employees {% endblock title %}
 
 {% block content %}
-
-
-<h1>all Emplployees page</h1>
-
-{% endblock content %} 
-  
-
-
+<div class="container mt-5 shadow">
+    <h2 class="text-center">All Employees</h2>
+    
+    <table class="table table-striped table-bordered mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th>Department</th>
+                <th>Joining Date</th>
+                <th style="width: 200px; text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.phone }}</td>
+                <td>{{ employee.position }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.joining_date }}</td>
+                <td style="text-align: center;">
+                    <a href="{% url 'update_employee' employee.id %}">
+                        <button style="background-color: lightgreen; border: none; border-radius: 10px; padding: 5px 10px;">Update</button>
+                    </a>
+                    <a href="{% url 'delete_employee' employee.id %}" onclick="return confirm('Are you sure you want to delete this employee?');">
+                        <button style="background-color: red; border: none; border-radius: 10px; padding: 5px 10px; color: white;">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="text-center">No Employees Found</td> <!-- Fixed colspan -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

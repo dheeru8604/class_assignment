@@ -1,57 +1,49 @@
 {% extends 'base.html' %}
 
-
-{% block title %}
-  Employee Registration
-{% endblock title %}
-
-
+{% block title %} Employee Registration {% endblock title %}
 
 {% block content %}
-
 <div class="container mt-5">
-  <h2 class="text-center">Employee Registration</h2>
+  <h2 class="text-center mb-4">Employee Registration</h2>
   <div class="row justify-content-center">
-      <div class="col-md-6">
-          <div class="card shadow">
-              <div class="card-body">
-                  <form method="post">
-                      {% csrf_token %}
-                      <div class="mb-3">
-                          <label class="form-label">Employee ID</label>
-                          <input type="text" name="emp_id" class="form-control" required>
-                      </div>
-                      <div class="mb-3">
-                          <label class="form-label">First Name</label>
-                          <input type="text" name="first_name" class="form-control" required>
-                      </div>
-                      <div class="mb-3">
-                          <label class="form-label">Last Name</label>
-                          <input type="text" name="last_name" class="form-control" required>
-                      </div>
-                      <div class="mb-3">
-                          <label class="form-label">Email</label>
-                          <input type="email" name="email" class="form-control" required>
-                      </div>
-                      <div class="mb-3">
-                          <label class="form-label">Phone</label>
-                          <input type="text" name="phone" class="form-control" required>
-                      </div>
-                      <div class="mb-3">
-                          <label class="form-label">Position</label>
-                          <input type="text" name="position" class="form-control" required>
-                      </div>
-                      <div class="mb-3">
-                          <label class="form-label">Department</label>
-                          <input type="text" name="department" class="form-control" required>
-                      </div>
-                      <button type="submit" class="btn btn-primary w-100">Register</button>
-                  </form>
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <div class="card shadow-lg rounded">
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Display form errors -->
+            {% if form.errors %}
+              <div class="alert alert-danger">
+                <ul>
+                  {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                      <li><strong>{{ field|capfirst }}:</strong> {{ error }}</li>
+                    {% endfor %}
+                  {% endfor %}
+                </ul>
               </div>
-          </div>
+            {% endif %}
+
+            <!-- Loop through form fields for better maintainability -->
+            {% for field in form %}
+              <div class="mb-3">
+                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <div class="input-group">
+                  {{ field }}
+                </div>
+                <!-- Display help text if any -->
+                {% if field.help_text %}
+                  <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+          </form>
+        </div>
       </div>
+    </div>
   </div>
-</div>s
-  
+</div>
 {% endblock content %}
-  
